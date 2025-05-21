@@ -1,0 +1,127 @@
+body {
+  background: #f5faff;
+}
+
+.navbar, footer {
+  background-color: #2557a7 !important;
+}
+
+.navbar-brand, .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+}
+.nav-link.active, .nav-link:focus, .nav-link:hover {
+  text-decoration: underline;
+  color: #d1e6fa !important;
+}
+
+.about-section {
+  background: #dbeafe;
+  border-radius: 40px;
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+
+.project-card .card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+  background: none;
+}
+
+.project-card .card-body {
+  background: #dbeafe;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+}
+
+.btn-purple {
+  background-color: #2557a7;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  transition: background 0.2s;
+  width: 100%;
+  padding: 0.75rem 0;
+}
+.btn-purple:hover, .btn-purple:focus {
+  background-color: #133f73;
+  color: #fff;
+}
+
+/* Coming Soon page */
+.coming-soon-box {
+  background: #dbeafe;
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  margin: 4rem auto;
+}
+.coming-soon-box h1 {
+  color: #2557a7;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.project-links {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.btn-project {
+  background: #2557a7;
+  color: #fff;
+  border-radius: 16px;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border: none;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.btn-project:hover, .btn-project:focus {
+  background: #133f73;
+  color: #fff;
+  text-decoration: none;
+}
+.back-link {
+  margin-top: 1.5rem;
+  display: inline-block;
+  color: #2557a7;
+  text-decoration: underline;
+}
