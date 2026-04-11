@@ -278,6 +278,16 @@ body {
   margin-bottom: 0;
 }
 
+.timeline-link {
+  color: #2557a7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.timeline-link:hover {
+  color: #133f73;
+}
+
 /* === Education === */
 .edu-grid {
   display: grid;

@@ -289,6 +289,69 @@ test.describe('Responsive Design', () => {
   });
 });
 
+// ─── Link Checker ─────────────────────────────────────────────────────────────
+
+// These tests make real HTTP requests to verify every linked URL is reachable.
+// LinkedIn (999 anti-bot) and HuggingFace Spaces (iframe auth) are checked for
+// non-server-error responses only.
+test.describe('Link Checker', () => {
+  test.setTimeout(30000);
+
+  test('resume.pdf is served by the local server', async ({ request }) => {
+    const res = await request.get('/resume.pdf');
+    expect(res.status(), 'resume.pdf not found on server').toBeLessThan(400);
+    expect(res.headers()['content-type']).toMatch(/pdf/);
+  });
+
+  test('GitHub profile is reachable', async ({ request }) => {
+    const res = await request.get('https://github.com/AliAdenAwil');
+    expect(res.status(), 'GitHub profile returned error').toBeLessThan(400);
+  });
+
+  test('Voice Assistant HuggingFace Space is reachable', async ({ request }) => {
+    const res = await request.get('https://huggingface.co/spaces/Aliadenawil/atlas-voice-assistant');
+    expect(res.status(), 'HuggingFace Space returned server error').toBeLessThan(500);
+  });
+
+  test('Flight Price Prediction GitHub repo is reachable', async ({ request }) => {
+    const res = await request.get('https://github.com/AliAdenAwil/flight-price-prediction');
+    expect(res.status(), 'Flight price repo returned error').toBeLessThan(400);
+  });
+
+  test('PedalPro Netlify site is reachable', async ({ request }) => {
+    const res = await request.get('https://pedalpro-bike-service.netlify.app/');
+    expect(res.status(), 'PedalPro site returned error').toBeLessThan(400);
+  });
+
+  test('ShopSmart Netlify site is reachable', async ({ request }) => {
+    const res = await request.get('https://shopsmartecommerce.netlify.app/');
+    expect(res.status(), 'ShopSmart site returned error').toBeLessThan(400);
+  });
+
+  test('Simon Says Netlify site is reachable', async ({ request }) => {
+    const res = await request.get('https://simonsaysgameuottawa.netlify.app/');
+    expect(res.status(), 'Simon Says site returned error').toBeLessThan(400);
+  });
+
+  test('Food Prices Dashboard is reachable', async ({ request }) => {
+    const res = await request.get('https://foodpricesdashboard.netlify.app/');
+    expect(res.status(), 'Food Prices dashboard returned error').toBeLessThan(400);
+  });
+
+  test('Zafin Medium article is reachable', async ({ request }) => {
+    const res = await request.get('https://medium.com/engineering-zafin/closing-the-gap-between-available-information-and-accessible-knowledge-a-multi-modal-approach-to-d824626bcfe7');
+    expect(res.status(), 'Medium article returned error').toBeLessThan(400);
+  });
+
+  test('LinkedIn profile is reachable', async ({ request }) => {
+    const res = await request.get('https://linkedin.com/in/aliawil');
+    // LinkedIn returns 999 for automated requests (anti-bot, not a real error).
+    // Anything that is not a 404 or standard 5xx confirms the URL is live.
+    const status = res.status();
+    expect(status === 999 || status < 400, `LinkedIn returned unexpected status ${status}`).toBe(true);
+  });
+});
+
 // ─── Content Quality ──────────────────────────────────────────────────────────
 
 test.describe('Content Quality', () => {
