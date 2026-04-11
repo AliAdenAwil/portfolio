@@ -1,0 +1,319 @@
+const { test, expect } = require('@playwright/test');
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/');
+});
+
+// ─── Navigation ───────────────────────────────────────────────────────────────
+
+test.describe('Navigation', () => {
+  // On mobile the nav is collapsed behind a hamburger — open it first if needed.
+  async function openNavIfCollapsed(page) {
+    const toggler = page.locator('.navbar-toggler');
+    if (await toggler.isVisible()) {
+      await toggler.click();
+      await page.locator('#navbarNav').waitFor({ state: 'visible' });
+    }
+  }
+
+  test('navbar brand shows name', async ({ page }) => {
+    await expect(page.locator('.navbar-brand')).toHaveText('Ali Awil');
+  });
+
+  test('navbar has links to all five sections', async ({ page }) => {
+    await openNavIfCollapsed(page);
+    for (const label of ['About', 'Skills', 'Experience', 'Projects', 'Contact']) {
+      await expect(page.getByRole('link', { name: label, exact: true })).toBeVisible();
+    }
+  });
+
+  test('About link scrolls to about section', async ({ page }) => {
+    await openNavIfCollapsed(page);
+    await page.getByRole('link', { name: 'About', exact: true }).click();
+    await expect(page.locator('#about')).toBeInViewport();
+  });
+
+  test('Projects link scrolls to projects section', async ({ page }) => {
+    await openNavIfCollapsed(page);
+    await page.getByRole('link', { name: 'Projects', exact: true }).click();
+    await expect(page.locator('#projects')).toBeInViewport();
+  });
+});
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
+
+test.describe('Hero Section', () => {
+  test('displays full name', async ({ page }) => {
+    await expect(page.locator('.hero-name')).toHaveText('Ali Awil');
+  });
+
+  test('displays professional title', async ({ page }) => {
+    await expect(page.locator('.hero-title')).toContainText('AI & Data Science Developer');
+  });
+
+  test('highlights Summa Cum Laude in bio', async ({ page }) => {
+    await expect(page.locator('.hero-bio')).toContainText('Summa Cum Laude');
+  });
+
+  test('has View Projects CTA button linking to #projects', async ({ page }) => {
+    const btn = page.getByRole('link', { name: 'View Projects' });
+    await expect(btn).toBeVisible();
+    await expect(btn).toHaveAttribute('href', '#projects');
+  });
+
+  test('has Download Resume button linking to resume.pdf', async ({ page }) => {
+    const btn = page.getByRole('link', { name: 'Download Resume' });
+    await expect(btn).toBeVisible();
+    await expect(btn).toHaveAttribute('href', 'resume.pdf');
+  });
+
+  test('profile photo is visible', async ({ page }) => {
+    const img = page.locator('.profile-img');
+    await expect(img).toBeVisible();
+    await expect(img).toHaveAttribute('alt', 'Ali Awil');
+  });
+
+  test('social links are present', async ({ page }) => {
+    await expect(page.locator('.social-icons a[href*="linkedin"]')).toBeVisible();
+    await expect(page.locator('.social-icons a[href*="github"]')).toBeVisible();
+    await expect(page.locator('.social-icons a[href*="mailto"]')).toBeVisible();
+  });
+});
+
+// ─── Skills Section ───────────────────────────────────────────────────────────
+
+test.describe('Skills Section', () => {
+  test('skills section exists', async ({ page }) => {
+    await expect(page.locator('#skills')).toBeVisible();
+  });
+
+  test('has exactly three skill categories', async ({ page }) => {
+    await expect(page.locator('#skills .skill-group')).toHaveCount(3);
+  });
+
+  test('lists core languages', async ({ page }) => {
+    for (const skill of ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'R']) {
+      await expect(page.locator('#skills').getByText(skill, { exact: true })).toBeVisible();
+    }
+  });
+
+  test('lists key ML/AI frameworks', async ({ page }) => {
+    for (const skill of ['PyTorch', 'Hugging Face', 'LangChain', 'Scikit-learn']) {
+      await expect(page.locator('#skills').getByText(skill, { exact: true })).toBeVisible();
+    }
+  });
+
+  test('lists key concepts', async ({ page }) => {
+    for (const concept of ['Machine Learning', 'RAG', 'Deep Learning', 'NLP']) {
+      await expect(page.locator('#skills').getByText(concept, { exact: true })).toBeVisible();
+    }
+  });
+});
+
+// ─── Experience Section ───────────────────────────────────────────────────────
+
+test.describe('Experience Section', () => {
+  test('experience section exists', async ({ page }) => {
+    await expect(page.locator('#experience')).toBeVisible();
+  });
+
+  test('has exactly three timeline entries', async ({ page }) => {
+    await expect(page.locator('.timeline-item')).toHaveCount(3);
+  });
+
+  test('shows all three employers', async ({ page }) => {
+    for (const company of ['University of Ottawa', 'Department of National Defence', 'Zafin']) {
+      await expect(page.locator('.timeline-company', { hasText: company })).toBeVisible();
+    }
+  });
+
+  test('shows all three roles', async ({ page }) => {
+    for (const role of ['Teaching Assistant', 'Data Science Developer Intern', 'Software Engineer Intern']) {
+      await expect(page.locator('.timeline-role', { hasText: role })).toBeVisible();
+    }
+  });
+
+  test('DND entry highlights key metrics', async ({ page }) => {
+    const dnd = page.locator('.timeline-item').filter({ hasText: 'National Defence' });
+    await expect(dnd).toContainText('23% faster inference');
+    await expect(dnd).toContainText('89% accuracy');
+  });
+
+  test('Zafin entry highlights key metrics', async ({ page }) => {
+    const zafin = page.locator('.timeline-item').filter({ hasText: 'Zafin' });
+    await expect(zafin).toContainText('90% accuracy');
+    await expect(zafin).toContainText('10K+');
+  });
+});
+
+// ─── Education Section ────────────────────────────────────────────────────────
+
+test.describe('Education Section', () => {
+  test('has exactly two education cards', async ({ page }) => {
+    await expect(page.locator('.edu-card')).toHaveCount(2);
+  });
+
+  test('shows MSc degree', async ({ page }) => {
+    await expect(page.locator('text=Master of Computer Science')).toBeVisible();
+    await expect(page.locator('text=Applied Artificial Intelligence')).toBeVisible();
+  });
+
+  test('shows BSc degree', async ({ page }) => {
+    await expect(page.locator('text=BSc Computer Science')).toBeVisible();
+  });
+
+  test('shows Summa Cum Laude', async ({ page }) => {
+    await expect(page.locator('.edu-card').filter({ hasText: 'Summa Cum Laude' })).toBeVisible();
+  });
+
+  test('shows CGPA', async ({ page }) => {
+    await expect(page.locator('.edu-card').filter({ hasText: '9.32' })).toBeVisible();
+  });
+});
+
+// ─── Projects Section ─────────────────────────────────────────────────────────
+
+test.describe('Projects Section', () => {
+  test('projects section exists', async ({ page }) => {
+    await expect(page.locator('#projects')).toBeVisible();
+  });
+
+  test('has exactly six project cards', async ({ page }) => {
+    await expect(page.locator('#projects .project-card')).toHaveCount(6);
+  });
+
+  test('shows all project titles', async ({ page }) => {
+    for (const title of [
+      'Voice Assistant Pipeline',
+      'Flight Price Prediction',
+      'Food Prices BI Dashboard',
+      'PedalPro Bike Service',
+      'ShopSmart E-Commerce',
+      'Simon Says Memory Game',
+    ]) {
+      await expect(page.locator('#projects .card-title', { hasText: title })).toBeVisible();
+    }
+  });
+
+  test('AI/ML projects show key metrics', async ({ page }) => {
+    await expect(page.locator('#projects').getByText('R² = 0.97')).toBeVisible();
+    await expect(page.locator('#projects').getByText('20+ intents')).toBeVisible();
+  });
+
+  test('every project card has a CTA button', async ({ page }) => {
+    const cards = page.locator('#projects .project-card');
+    const count = await cards.count();
+    for (let i = 0; i < count; i++) {
+      await expect(cards.nth(i).locator('.btn-purple')).toBeVisible();
+    }
+  });
+
+  test('live demo links point to correct deployments', async ({ page }) => {
+    for (const domain of [
+      'huggingface.co/spaces/Aliadenawil/atlas-voice-assistant',
+      'github.com/AliAdenAwil/flight-price-prediction',
+      'pedalpro-bike-service.netlify.app',
+      'shopsmartecommerce.netlify.app',
+      'simonsaysgameuottawa.netlify.app',
+      'foodpricesdashboard.netlify.app',
+    ]) {
+      await expect(page.locator(`a[href*="${domain}"]`)).toBeVisible();
+    }
+  });
+
+  test('AI/ML project cards have category badges', async ({ page }) => {
+    await expect(page.locator('.project-badge', { hasText: 'AI / NLP' })).toBeVisible();
+    await expect(page.locator('.project-badge', { hasText: 'Machine Learning' })).toBeVisible();
+  });
+});
+
+// ─── Contact Section ──────────────────────────────────────────────────────────
+
+test.describe('Contact Section', () => {
+  test('contact section exists', async ({ page }) => {
+    await expect(page.locator('#contact')).toBeVisible();
+  });
+
+  test('has Say Hello CTA button', async ({ page }) => {
+    const btn = page.getByRole('link', { name: 'Say Hello' });
+    await expect(btn).toBeVisible();
+    await expect(btn).toHaveAttribute('href', 'mailto:aliadenawil1955@gmail.com');
+  });
+
+  test('shows correct email address', async ({ page }) => {
+    await expect(
+      page.locator('#contact a[href="mailto:aliadenawil1955@gmail.com"]').first()
+    ).toBeVisible();
+  });
+
+  test('has LinkedIn and GitHub social links', async ({ page }) => {
+    await expect(page.locator('#contact a[href*="linkedin"]')).toBeVisible();
+    await expect(page.locator('#contact a[href*="github"]')).toBeVisible();
+  });
+});
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
+test.describe('Footer', () => {
+  test('shows copyright with current year', async ({ page }) => {
+    await expect(page.locator('footer')).toContainText('2026');
+    await expect(page.locator('footer')).toContainText('Ali Awil');
+  });
+});
+
+// ─── Responsive Design ────────────────────────────────────────────────────────
+
+test.describe('Responsive Design', () => {
+  test('mobile: hamburger toggle is visible, nav links are collapsed', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await expect(page.locator('.navbar-toggler')).toBeVisible();
+    await expect(page.locator('#navbarNav')).not.toBeVisible();
+  });
+
+  test('mobile: hamburger opens the nav menu', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.locator('.navbar-toggler').click();
+    await expect(page.locator('#navbarNav')).toBeVisible();
+  });
+
+  test('desktop: nav links are directly visible', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await expect(page.locator('#navbarNav')).toBeVisible();
+    await expect(page.getByRole('link', { name: 'About', exact: true })).toBeVisible();
+  });
+
+  test('mobile: hero section is readable', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await expect(page.locator('.hero-name')).toBeVisible();
+    await expect(page.locator('.hero-title')).toBeVisible();
+  });
+});
+
+// ─── Content Quality ──────────────────────────────────────────────────────────
+
+test.describe('Content Quality', () => {
+  test('no em dashes in page text', async ({ page }) => {
+    const bodyText = await page.locator('body').innerHTML();
+    const hasEmDash = bodyText.includes('—') || bodyText.includes('&mdash;');
+    expect(hasEmDash, 'Found an em dash (— or &mdash;) in the page').toBe(false);
+  });
+});
+
+// ─── Page Meta ────────────────────────────────────────────────────────────────
+
+test.describe('Page Meta', () => {
+  test('page title includes name and role', async ({ page }) => {
+    await expect(page).toHaveTitle(/Ali Awil/);
+    await expect(page).toHaveTitle(/AI & Data Science Developer/);
+  });
+
+  test('has viewport meta tag for mobile', async ({ page }) => {
+    const viewport = page.locator('meta[name="viewport"]');
+    await expect(viewport).toHaveAttribute('content', /width=device-width/);
+  });
+
+  test('has meta description', async ({ page }) => {
+    const desc = page.locator('meta[name="description"]');
+    await expect(desc).toHaveAttribute('content', /.+/);
+  });
+});

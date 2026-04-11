@@ -1,0 +1,18 @@
+services:
+  test:
+    build: .
+    # Mount report directory so the HTML report is readable on the host after the run
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    # Default: run the full test suite and exit
+    command: npm test
+
+  # Run with: docker compose run --rm test-ui
+  # Opens Playwright UI mode (requires a display — use only locally, not CI)
+  test-ui:
+    build: .
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    environment:
+      - DISPLAY=${DISPLAY}
+    command: npm run test:ui

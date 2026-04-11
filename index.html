@@ -2,103 +2,373 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ali Awil - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ali Awil – AI & Data Science Developer. MSc Applied AI student at University of Ottawa. Specializing in machine learning, RAG systems, and full-stack development.">
+  <title>Ali Awil – AI & Data Science Developer</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">My Portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#home">Ali Awil</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- About Me Section -->
-  <section class="container about-section">
-    <img src="images/ali.jpg" class="profile-img" alt="Ali Awil">
-    <div>
-      <h2>Ali Awil</h2>
-      <p>
-        I am a <b>computer science</b> student at the University of Ottawa, currently learning UI and UX design as part of my coursework (<a href="https://www.uottawa.ca/en" target="_blank">SEG3125</a>). My approach is influenced by <a href="https://www.nngroup.com/" target="_blank">usability principles</a> and <a href="https://www.interaction-design.org/literature/article/what-should-a-ux-design-portfolio-contain" target="_blank">modern interface design practices</a>. I value clean, efficient code, strong problem-solving, and enjoy applying new technologies to real-world challenges.
-      </p>          
-      <div class="mt-3">
-        <a href="mailto:aliadenawil1955@gmail.com" class="me-3 text-decoration-none text-dark" title="Email">
-          <i class="fas fa-envelope fa-lg"></i>
-        </a>
-        <a href="https://linkedin.com/in/aliawil" target="_blank" class="me-3 text-decoration-none text-dark" title="LinkedIn">
-          <i class="fab fa-linkedin fa-lg"></i>
-        </a>
-        <a href="https://github.com/AliAdenAwil" target="_blank" class="text-decoration-none text-dark" title="GitHub">
-          <i class="fab fa-github fa-lg"></i>
-        </a>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-inner">
+        <img src="images/ali.jpg" class="profile-img" alt="Ali Awil">
+        <div class="hero-text">
+          <p class="hero-greeting">Hi, I'm</p>
+          <h1 class="hero-name">Ali Awil</h1>
+          <p class="hero-title">AI &amp; Data Science Developer</p>
+          <p class="hero-bio">
+            MSc student in Applied AI at the University of Ottawa. Graduated <strong>Summa Cum Laude</strong> (CGPA&nbsp;9.32/10) with a BSc in Computer Science. I build production-ready AI systems including RAG pipelines, multimodal models, and NLP pipelines, backed by internships at the Department of National Defence and Zafin.
+          </p>
+          <div class="hero-actions mt-4">
+            <a href="#projects" class="btn btn-hero-primary me-3">View Projects</a>
+            <a href="resume.pdf" download class="btn btn-hero-outline">Download Resume</a>
+          </div>
+          <div class="mt-4 social-icons">
+            <a href="mailto:aliadenawil1955@gmail.com" class="me-3" title="Email">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+            <a href="https://linkedin.com/in/aliawil" target="_blank" class="me-3" title="LinkedIn">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a href="https://github.com/AliAdenAwil" target="_blank" title="GitHub">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-pad">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-card">
+        <p>
+          I'm a computer scientist with a deep focus on <strong>Artificial Intelligence and Data Science</strong>. My academic journey at the University of Ottawa, where I earned Dean's Honour List recognition every eligible semester, has been shaped by hands-on research and industry experience.
+        </p>
+        <p>
+          At the <strong>Department of National Defence</strong>, I contributed to large-scale AI research initiatives involving LLaVA multimodal models and information extraction pipelines. At <strong>Zafin</strong>, I engineered an enterprise RAG knowledge assistant that achieved 90% accuracy on internal benchmarks and co-authored a research article published on their Engineering Blog.
+        </p>
+        <p>
+          I'm passionate about building AI systems that are technically robust and genuinely useful, from fine-tuning large language models to deploying them as production microservices on cloud infrastructure.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section-pad section-alt">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h5 class="skill-group-title"><i class="fas fa-code me-2"></i>Languages</h5>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">R</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h5 class="skill-group-title"><i class="fas fa-tools me-2"></i>Frameworks &amp; Tools</h5>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Hugging Face</span>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h5 class="skill-group-title"><i class="fas fa-brain me-2"></i>Concepts</h5>
+          <div class="skill-tags">
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">Agentic AI</span>
+            <span class="skill-tag">Vector Databases</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">Model Evaluation</span>
+            <span class="skill-tag">Cloud Deployment</span>
+            <span class="skill-tag">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section-pad">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h4 class="timeline-role">Teaching Assistant</h4>
+              <p class="timeline-company">University of Ottawa, Ottawa, Canada</p>
+            </div>
+            <span class="timeline-date">Jan 2026 &ndash; Present</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>TA for CSI 3131 (Operating Systems), supporting students through labs and assignments in C and C++.</li>
+            <li>Guided students through debugging in systems programming and reinforced core OS concepts including processes, threads, synchronization, and memory management.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h4 class="timeline-role">Data Science Developer Intern</h4>
+              <p class="timeline-company">Department of National Defence, Ottawa, Canada</p>
+            </div>
+            <span class="timeline-date">May 2024 &ndash; May 2025</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Optimized model selection for FAM policy Q&amp;A by benchmarking Longwizard-70B and Mistral Nemo, achieving <strong>23% faster inference</strong> and <strong>89% accuracy</strong>.</li>
+            <li>Tested a fine-tuned LLaVA (WizardLM-70B + CLIP) model and analyzed outputs to evaluate multimodal reasoning quality.</li>
+            <li>Led end-to-end experimentation, benchmarking, and documentation for two large-scale AI research initiatives (LLaVA multimodal and Space News).</li>
+            <li>Validated entity-level accuracy and improved reliability of the Space News information extraction pipeline.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h4 class="timeline-role">Software Engineer Intern</h4>
+              <p class="timeline-company">Zafin, Toronto, Canada</p>
+            </div>
+            <span class="timeline-date">May 2023 &ndash; Aug 2023</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Built an Enterprise RAG Knowledge Assistant using OpenAI's API achieving <strong>90% accuracy</strong> on internal benchmarks.</li>
+            <li>Architected a custom RAG pipeline ingesting and processing 10K+ internal documents into a PostgreSQL vector database.</li>
+            <li>Evaluated performance/cost tradeoffs between Falcon-7B and GPT; deployed solution via Flask microservice on Azure.</li>
+            <li>Co-authored <em>"Closing the Gap Between Available Information and Accessible Knowledge"</em>, published on Zafin's Engineering Blog (Medium, Aug 2023).</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section-pad section-alt">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-grid">
+
+        <div class="edu-card">
+          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div>
+            <h4 class="edu-degree">Master of Computer Science</h4>
+            <p class="edu-field">Applied Artificial Intelligence</p>
+            <p class="edu-school">University of Ottawa</p>
+            <p class="edu-date">Jan 2026 &ndash; Jun 2027</p>
+            <p class="edu-courses"><em>Machine Learning &middot; Virtual Assistants &middot; Deep Learning &amp; Reinforcement Learning &middot; Ethics in AI</em></p>
+          </div>
+        </div>
+
+        <div class="edu-card edu-card-accent">
+          <div class="edu-icon"><i class="fas fa-medal"></i></div>
+          <div>
+            <h4 class="edu-degree">BSc Computer Science (Co-op)</h4>
+            <p class="edu-field">Data Science Option, <strong>Summa Cum Laude</strong></p>
+            <p class="edu-school">University of Ottawa</p>
+            <p class="edu-date">Jan 2021 &ndash; Mar 2026</p>
+            <p class="edu-courses"><em>CGPA 9.32 / 10 &middot; Dean's Honour List (multiple terms)</em></p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="container my-5">
-    <h2 class="mb-4">My Projects</h2>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <div class="card project-card h-100">
-          <img src="images/service.png" class="card-img-top" alt="Service Site">
-          <div class="card-body">
-            <h5 class="card-title">PedalPro Bike Service Website</h5>
-            <p class="card-text">        A user-centered web app for booking bike repairs and tune-ups, with online appointment scheduling, service details, and contact info. Built with React and Bootstrap.</p>
-            <a href="https://pedalpro-bike-service.netlify.app/" class="btn btn-purple w-100">View Project</a>
+  <section id="projects" class="section-pad">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row g-4">
+
+        <!-- Voice Assistant -->
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="project-badge">AI / NLP</div>
+            <div class="project-img-placeholder placeholder-ai">
+              <i class="fas fa-microphone-alt fa-3x"></i>
+            </div>
+            <div class="card-body project-body">
+              <h5 class="card-title">Voice Assistant Pipeline</h5>
+              <p class="card-text">End-to-end VA with speaker verification (ECAPA-TDNN), wake word detection, Whisper ASR, and fine-tuned BERT for joint intent classification and slot filling across 20+ intents (movies, music, system control).</p>
+              <div class="mt-auto">
+                <div class="project-tags">
+                  <span>PyTorch</span><span>Hugging Face</span><span>Whisper</span><span>BERT</span>
+                </div>
+                <a href="https://huggingface.co/spaces/Aliadenawil/atlas-voice-assistant" target="_blank" class="btn btn-purple w-100 mt-2">Live Demo</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card project-card h-100">
-          <img src="images/game.png" class="card-img-top" alt="Game">
-          <div class="card-body">
-            <h5 class="card-title">Simon Says Memory Game</h5>
-            <p class="card-text">
-  A web-based game to practice memory and attention, with levels, colorful themes, and real-time feedback. Built with React.</p>
-<a href="https://simonsaysgameuottawa.netlify.app/" target="_blank" class="btn btn-purple w-100">View Project</a>
+
+        <!-- Flight Price Prediction -->
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="project-badge">Machine Learning</div>
+            <div class="project-img-placeholder placeholder-ml">
+              <i class="fas fa-chart-line fa-3x"></i>
+            </div>
+            <div class="card-body project-body">
+              <h5 class="card-title">Flight Price Prediction</h5>
+              <p class="card-text">Trained Random Forest, XGBoost, and a TensorFlow DNN on 300K+ flight records. DNN achieved R² = 0.97, outperforming tree-based baselines. Applied SHAP for explainability; validated improvements via paired t-tests (p ≈ 0).</p>
+              <div class="mt-auto">
+                <div class="project-tags">
+                  <span>TensorFlow</span><span>XGBoost</span><span>SHAP</span><span>Scikit-learn</span>
+                </div>
+                <a href="https://github.com/AliAdenAwil/flight-price-prediction" target="_blank" class="btn btn-purple w-100 mt-2">View on GitHub</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card project-card h-100">
-          <img src="images/ecommerce.png" class="card-img-top" alt="E-Commerce">
-          <div class="card-body">
-            <h5 class="card-title">E-Commerce Website</h5>
-            <p class="card-text">A modern online clothing and accessories store.</p>
-            <a href="https://shopsmartecommerce.netlify.app/" class="btn btn-purple w-100">View Project</a>
+
+        <!-- BI Dashboard -->
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="project-badge">Data / BI</div>
+            <img src="images/analytics.png" class="card-img-top" alt="Food Prices BI Dashboard">
+            <div class="card-body project-body">
+              <h5 class="card-title">Food Prices BI Dashboard</h5>
+              <p class="card-text">Interactive business intelligence dashboard visualizing food price trends with dynamic filters, charts, and data storytelling to support informed decision-making.</p>
+              <div class="mt-auto">
+                <div class="project-tags">
+                  <span>Power BI</span><span>Data Visualization</span>
+                </div>
+                <a href="https://foodpricesdashboard.netlify.app/" target="_blank" class="btn btn-purple w-100 mt-2">Live Demo</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card project-card h-100">
-          <img src="images/analytics.png" class="card-img-top" alt="Analytics">
-          <div class="card-body">
-            <h5 class="card-title">BI/Sport Analytics</h5>
-            <p class="card-text">A dashboard for sport analytics and business intelligence.</p>
-            <a href="https://foodpricesdashboard.netlify.app/" class="btn btn-purple w-100">View Project</a>
+
+        <!-- PedalPro -->
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="project-badge">Web App</div>
+            <img src="images/service.png" class="card-img-top" alt="PedalPro Bike Service">
+            <div class="card-body project-body">
+              <h5 class="card-title">PedalPro Bike Service</h5>
+              <p class="card-text">User-centered web app for booking bike repairs and tune-ups, featuring online appointment scheduling, service catalog, and contact management.</p>
+              <div class="mt-auto">
+                <div class="project-tags">
+                  <span>React</span><span>Bootstrap</span>
+                </div>
+                <a href="https://pedalpro-bike-service.netlify.app/" target="_blank" class="btn btn-purple w-100 mt-2">Live Demo</a>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- E-Commerce -->
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="project-badge">Web App</div>
+            <img src="images/ecommerce.png" class="card-img-top" alt="ShopSmart E-Commerce">
+            <div class="card-body project-body">
+              <h5 class="card-title">ShopSmart E-Commerce</h5>
+              <p class="card-text">Full-featured online clothing and accessories store with product browsing, cart management, and a clean, fully responsive shopping experience.</p>
+              <div class="mt-auto">
+                <div class="project-tags">
+                  <span>React</span><span>Bootstrap</span>
+                </div>
+                <a href="https://shopsmartecommerce.netlify.app/" target="_blank" class="btn btn-purple w-100 mt-2">Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simon Says -->
+        <div class="col-md-4">
+          <div class="card project-card h-100">
+            <div class="project-badge">Web App</div>
+            <img src="images/game.png" class="card-img-top" alt="Simon Says Memory Game">
+            <div class="card-body project-body">
+              <h5 class="card-title">Simon Says Memory Game</h5>
+              <p class="card-text">Web-based memory and attention training game with progressive difficulty levels, colorful themes, and real-time feedback to keep players engaged.</p>
+              <div class="mt-auto">
+                <div class="project-tags">
+                  <span>React</span>
+                </div>
+                <a href="https://simonsaysgameuottawa.netlify.app/" target="_blank" class="btn btn-purple w-100 mt-2">Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <footer class="text-white text-center py-3">
-    <div class="container">
-      &copy; 2025 Ali Awil. All rights reserved.
+  <!-- Contact Section -->
+  <section id="contact" class="section-pad section-alt">
+    <div class="container text-center">
+      <h2 class="section-title mx-auto" style="display:inline-block;">Get In Touch</h2>
+      <p class="contact-sub">
+        I'm actively looking for full-time opportunities in AI, Data Science, and Software Engineering. Feel free to reach out. I'd love to connect!
+      </p>
+      <a href="mailto:aliadenawil1955@gmail.com" class="btn btn-hero-primary btn-lg">Say Hello</a>
+      <div class="contact-socials">
+        <a href="mailto:aliadenawil1955@gmail.com" title="Email">
+          <i class="fas fa-envelope fa-2x"></i>
+        </a>
+        <a href="https://linkedin.com/in/aliawil" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+        <a href="https://github.com/AliAdenAwil" target="_blank" title="GitHub">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2026 Ali Awil. All rights reserved.</p>
     </div>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

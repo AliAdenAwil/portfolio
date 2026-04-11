@@ -1,0 +1,15 @@
+{
+  "name": "ali-awil-portfolio",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "serve": "serve . -l 3000 --no-clipboard"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "serve": "^14.2.3"
+  }
+}
