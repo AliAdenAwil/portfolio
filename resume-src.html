@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Awil — Resume</title>
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #444;
+      --accent: #4f46e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0.7in 0.75in;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 9.75pt;
+      line-height: 1.32;
+      color: var(--ink);
+      orphans: 3;
+      widows: 3;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    header {
+      margin-bottom: 0.7rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    h1 {
+      margin: 0;
+      font-size: 16pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .tagline {
+      margin: 0.18rem 0 0;
+      font-size: 9.75pt;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .contact {
+      margin-top: 0.38rem;
+      font-size: 9pt;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .contact a { color: var(--accent); text-decoration: none; }
+    section { margin-bottom: 0; }
+    h2 {
+      margin: 0.65rem 0 0.3rem;
+      font-size: 9.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.12rem;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    h2.section-first { margin-top: 0.15rem; }
+    .edu-block, .role { margin-bottom: 0.48rem; }
+    .edu-block:last-child, .role:last-child { margin-bottom: 0; }
+    .role-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.2rem 0.85rem;
+      align-items: baseline;
+      font-weight: 600;
+    }
+    .role-title { flex: 1 1 auto; }
+    .role-date { flex: 0 0 auto; font-size: 9pt; color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .company { font-size: 9.25pt; color: var(--muted); margin: 0.08rem 0 0.26rem; }
+    ul {
+      margin: 0;
+      padding-left: 1.05rem;
+    }
+    li { margin-bottom: 0.14rem; }
+    li:last-child { margin-bottom: 0; }
+    .skills-line { margin: 0.2rem 0; font-size: 9.25pt; line-height: 1.38; }
+    .skills-line strong { font-weight: 600; }
+    .edu-meta { font-size: 9.25pt; color: var(--muted); margin: 0.12rem 0; line-height: 1.38; }
+
+    /* Keep section heading glued to body (no orphan headings across pages). */
+    .resume-section-shell { margin-top: 0.5rem; }
+    .resume-section-shell:first-of-type { margin-top: 0; }
+    .resume-section-inner {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .project { margin-bottom: 0.3rem; line-height: 1.38; font-size: 9.25pt; }
+    .project:last-child { margin-bottom: 0; }
+    .project-name { font-weight: 600; }
+
+    @page {
+      size: letter;
+      margin: 0.45in;
+    }
+    @media print {
+      body { padding: 0; font-size: 9.5pt; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ali Awil</h1>
+    <p class="tagline">AI Researcher &amp; Software Engineer</p>
+    <p class="contact">
+      Ottawa, ON, Canada &nbsp;|&nbsp;
+      <a href="mailto:aliadenawil1955@gmail.com">aliadenawil1955@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://linkedin.com/in/aliawil">linkedin.com/in/aliawil</a> &nbsp;|&nbsp;
+      <a href="https://github.com/AliAdenAwil">github.com/AliAdenAwil</a> &nbsp;|&nbsp;
+      <a href="https://aliawil.netlify.app/">aliawil.netlify.app</a>
+    </p>
+  </header>
+
+  <section class="resume-section-shell" aria-label="Education">
+    <div class="resume-section-inner">
+      <h2 class="section-first">Education</h2>
+      <div class="edu-block">
+        <div class="role-head">
+          <span class="role-title">Master of Computer Science — Applied Artificial Intelligence</span>
+          <span class="role-date">Jan 2026 &ndash; Jun 2027</span>
+        </div>
+        <p class="company">University of Ottawa</p>
+        <p class="edu-meta"><em>Machine Learning &middot; Virtual Assistants &middot; Deep Learning &amp; Reinforcement Learning &middot; Ethics in AI</em></p>
+      </div>
+      <div class="edu-block">
+        <div class="role-head">
+          <span class="role-title">BSc Computer Science (Co-op), Data Science Option — Summa Cum Laude</span>
+          <span class="role-date">Jan 2021 &ndash; Mar 2026</span>
+        </div>
+        <p class="company">University of Ottawa</p>
+        <p class="edu-meta">CGPA 9.32 / 10 &middot; Dean's Honour List (multiple terms)</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Experience">
+    <h2>Experience</h2>
+
+    <article class="role">
+      <div class="role-head">
+        <span class="role-title">AI &amp; Demand Generation Engineering Intern</span>
+        <span class="role-date">May 2026 &ndash; Aug 2026</span>
+      </div>
+      <p class="company">PureFacts, Toronto, ON (Hybrid; based in Ottawa, ON)</p>
+      <ul>
+        <li>Collaborate with data and AI engineers on ingestion, normalization, and warehouse-ready modeling sourced from SaaS CRM, collaboration, marketing, and external feeds supporting analytics and internal AI prototyping.</li>
+        <li>Contribute to embedding and retrieval pipelines for unstructured corpora (meetings, documents): parsing, hybrid search tuning, and quality checks feeding responsibly grounded assistants.</li>
+        <li>Leverage AI-assisted drafting where appropriate under senior review for specs and sprint planning; follow role-based access, privacy norms, and data-sensitivity constraints typical of regulated-client environments.</li>
+      </ul>
+    </article>
+
+    <article class="role">
+      <div class="role-head">
+        <span class="role-title">Teaching Assistant</span>
+        <span class="role-date">Jan 2026 &ndash; Apr 2026</span>
+      </div>
+      <p class="company">University of Ottawa, Ottawa, Canada</p>
+      <ul>
+        <li>TA for CSI 3131 (Operating Systems), supporting students through labs and assignments in C and C++.</li>
+        <li>Guided students through debugging in systems programming and reinforced core OS concepts including processes, threads, synchronization, and memory management.</li>
+      </ul>
+    </article>
+
+    <article class="role">
+      <div class="role-head">
+        <span class="role-title">Data Science Developer Intern</span>
+        <span class="role-date">May 2024 &ndash; May 2025</span>
+      </div>
+      <p class="company">Department of National Defence, Ottawa, Canada</p>
+      <ul>
+        <li>Optimized model selection for FAM policy Q&amp;A by benchmarking Longwizard-70B and Mistral Nemo, achieving <strong>23% faster inference</strong> and <strong>89% accuracy</strong>.</li>
+        <li>Tested a fine-tuned LLaVA (WizardLM-70B + CLIP) model and analyzed outputs to evaluate multimodal reasoning quality.</li>
+        <li>Led experimentation, benchmarking, and documentation for two large-scale initiatives (LLaVA multimodal and Space News).</li>
+        <li>Validated entity-level accuracy and improved reliability of the Space News information extraction pipeline.</li>
+      </ul>
+    </article>
+
+    <article class="role">
+      <div class="role-head">
+        <span class="role-title">Software Engineer Intern</span>
+        <span class="role-date">May 2023 &ndash; Aug 2023</span>
+      </div>
+      <p class="company">Zafin, Toronto, Canada</p>
+      <ul>
+        <li>Built an Enterprise RAG Knowledge Assistant using OpenAI's API achieving <strong>90% accuracy</strong> on internal benchmarks.</li>
+        <li>Architected a custom RAG pipeline ingesting and processing 10K+ internal documents into a PostgreSQL vector database.</li>
+        <li>Evaluated Falcon-7B vs GPT tradeoffs; deployed via Flask microservice on Azure.</li>
+        <li>Co-authored &ldquo;Closing the Gap Between Available Information and Accessible Knowledge,&rdquo; Zafin Engineering Blog (Medium, Aug 2023).</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="resume-section-shell" aria-label="Technical skills">
+    <div class="resume-section-inner">
+      <h2>Technical skills</h2>
+      <p class="skills-line"><strong>Languages:</strong> Python, Java, C++, JavaScript, TypeScript, SQL, R</p>
+      <p class="skills-line"><strong>Frameworks &amp; tools:</strong> PyTorch, Scikit-learn, Hugging Face, LangChain, FastAPI, Flask, React, Docker, Azure, Snowflake, Power BI, Git</p>
+      <p class="skills-line"><strong>Concepts:</strong> Machine learning, RAG, agentic AI, vector databases, NLP, deep learning, model evaluation, cloud deployment, data visualization</p>
+    </div>
+  </section>
+
+  <section class="resume-section-shell" aria-label="Selected projects">
+    <div class="resume-section-inner">
+      <h2>Selected projects</h2>
+      <div class="project">
+        <span class="project-name">Voice Assistant Pipeline</span> &mdash; ECAPA-TDNN verification, wake word, Whisper ASR, BERT intent/slots (20+ intents).
+        <a href="https://huggingface.co/spaces/Aliadenawil/atlas-voice-assistant">huggingface.co/spaces/Aliadenawil/atlas-voice-assistant</a>
+      </div>
+      <div class="project">
+        <span class="project-name">Flight Price Prediction</span> &mdash; Random Forest, XGBoost, TensorFlow DNN on 300K+ records (DNN R&sup2; &asymp; 0.97); SHAP &amp; paired t-tests.
+        <a href="https://github.com/AliAdenAwil/flight-price-prediction">github.com/AliAdenAwil/flight-price-prediction</a>
+      </div>
+      <div class="project">
+        <span class="project-name">Food Prices BI Dashboard</span> &mdash; Power BI trends dashboard for decision support.
+        <a href="https://foodpricesdashboard.netlify.app/">foodpricesdashboard.netlify.app</a>
+      </div>
+      <div class="project">
+        <span class="project-name">PedalPro Bike Service</span> &mdash; Full-stack service booking application.
+        <a href="https://pedalpro-bike-service.netlify.app/">pedalpro-bike-service.netlify.app</a>
+      </div>
+      <div class="project">
+        <span class="project-name">ShopSmart E-Commerce</span> &mdash; E-commerce UI and flows.
+        <a href="https://shopsmartecommerce.netlify.app/">shopsmartecommerce.netlify.app</a>
+      </div>
+      <div class="project">
+        <span class="project-name">Simon Says Memory Game</span> &mdash; Browser memory game.
+        <a href="https://simonsaysgameuottawa.netlify.app/">simonsaysgameuottawa.netlify.app</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

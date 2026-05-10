@@ -133,18 +133,18 @@ test.describe('Experience Section', () => {
     await expect(page.locator('#experience')).toBeVisible();
   });
 
-  test('has exactly three timeline entries', async ({ page }) => {
-    await expect(page.locator('.timeline-item')).toHaveCount(3);
+  test('has exactly four timeline entries', async ({ page }) => {
+    await expect(page.locator('.timeline-item')).toHaveCount(4);
   });
 
-  test('shows all three employers', async ({ page }) => {
-    for (const company of ['University of Ottawa', 'Department of National Defence', 'Zafin']) {
+  test('shows all four employers', async ({ page }) => {
+    for (const company of ['PureFacts', 'University of Ottawa', 'Department of National Defence', 'Zafin']) {
       await expect(page.locator('.timeline-company', { hasText: company })).toBeVisible();
     }
   });
 
-  test('shows all three roles', async ({ page }) => {
-    for (const role of ['Teaching Assistant', 'Data Science Developer Intern', 'Software Engineer Intern']) {
+  test('shows all four roles', async ({ page }) => {
+    for (const role of ['AI & Demand Generation Engineering Intern', 'Teaching Assistant', 'Data Science Developer Intern', 'Software Engineer Intern']) {
       await expect(page.locator('.timeline-role', { hasText: role })).toBeVisible();
     }
   });

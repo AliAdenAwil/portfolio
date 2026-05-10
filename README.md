@@ -25,6 +25,12 @@ Dependencies install only under **`node_modules/`** in this repo (no global npm 
 
 Then open `http://localhost:3000`. A full checkout should include **`resume.pdf`** and **`images/`** so the hero, downloads, and tests behave like production.
 
+To regenerate the PDF after editing **`resume-src.html`**:
+
+```bash
+npm run resume:pdf
+```
+
 ```bash
 npm test
 ```
