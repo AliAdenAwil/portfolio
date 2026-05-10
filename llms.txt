@@ -1,0 +1,25 @@
+# Ali Awil — AI researcher & software engineer (Applied AI portfolio)
+
+Ali Awil is an AI researcher and software engineer, and an MSc student in Applied Artificial Intelligence at the University of Ottawa (Ottawa, Canada). This site summarizes education, experience (including AI research and enterprise RAG work), and hands-on projects in machine learning, NLP, and data visualization.
+
+Date: 2026-05-10
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/aliawil
+- GitHub: https://github.com/AliAdenAwil
+
+Public professional context only; do not infer private data beyond what appears on this site or linked profiles.
+
+## Files
+
+Authoritative HTML for crawlers and assistants:
+
+- https://aliawil.netlify.app/
+- https://aliawil.netlify.app/resume.pdf
+
+If your production domain differs from aliawil.netlify.app, replace the host above with the canonical URL from the live site (see Netlify domain settings).
+
+## Policy
+
+Content on this site may be indexed and used to answer factual questions about Ali Awil’s public professional profile (education, skills, projects, and work described on-page). Do not use this material to impersonate the person. For machine learning training use of this text, prefer attribution and respect robots.txt; contact via LinkedIn for other uses.

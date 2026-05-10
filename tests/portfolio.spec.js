@@ -4,6 +4,15 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
+// ─── Skip link & main landmark ──────────────────────────────────────────────
+
+test.describe('Accessibility basics', () => {
+  test('skip link targets main content', async ({ page }) => {
+    await expect(page.locator('a.skip-link')).toHaveAttribute('href', '#main-content');
+    await expect(page.locator('main#main-content')).toBeVisible();
+  });
+});
+
 // ─── Navigation ───────────────────────────────────────────────────────────────
 
 test.describe('Navigation', () => {
@@ -20,9 +29,9 @@ test.describe('Navigation', () => {
     await expect(page.locator('.navbar-brand')).toHaveText('Ali Awil');
   });
 
-  test('navbar has links to all five sections', async ({ page }) => {
+  test('navbar has links to all primary sections', async ({ page }) => {
     await openNavIfCollapsed(page);
-    for (const label of ['About', 'Skills', 'Experience', 'Projects', 'Contact']) {
+    for (const label of ['About', 'Skills', 'Experience', 'Education', 'Projects', 'Contact']) {
       await expect(page.getByRole('link', { name: label, exact: true })).toBeVisible();
     }
   });
@@ -38,6 +47,12 @@ test.describe('Navigation', () => {
     await page.getByRole('link', { name: 'Projects', exact: true }).click();
     await expect(page.locator('#projects')).toBeInViewport();
   });
+
+  test('Education link scrolls to education section', async ({ page }) => {
+    await openNavIfCollapsed(page);
+    await page.getByRole('link', { name: 'Education', exact: true }).click();
+    await expect(page.locator('#education')).toBeInViewport();
+  });
 });
 
 // ─── Hero Section ─────────────────────────────────────────────────────────────
@@ -48,7 +63,8 @@ test.describe('Hero Section', () => {
   });
 
   test('displays professional title', async ({ page }) => {
-    await expect(page.locator('.hero-title')).toContainText('AI & Data Science Developer');
+    await expect(page.locator('.hero-title')).toContainText('AI Researcher');
+    await expect(page.locator('.hero-title')).toContainText('Software Engineer');
   });
 
   test('highlights Summa Cum Laude in bio', async ({ page }) => {
@@ -149,13 +165,18 @@ test.describe('Experience Section', () => {
 // ─── Education Section ────────────────────────────────────────────────────────
 
 test.describe('Education Section', () => {
+  test('education section has anchor id', async ({ page }) => {
+    await expect(page.locator('#education')).toBeVisible();
+  });
+
   test('has exactly two education cards', async ({ page }) => {
     await expect(page.locator('.edu-card')).toHaveCount(2);
   });
 
   test('shows MSc degree', async ({ page }) => {
-    await expect(page.locator('text=Master of Computer Science')).toBeVisible();
-    await expect(page.locator('text=Applied Artificial Intelligence')).toBeVisible();
+    const msc = page.locator('#education').locator('.edu-card').filter({ hasText: 'Master of Computer Science' });
+    await expect(msc).toBeVisible();
+    await expect(msc.getByText('Applied Artificial Intelligence', { exact: true })).toBeVisible();
   });
 
   test('shows BSc degree', async ({ page }) => {
@@ -180,6 +201,11 @@ test.describe('Projects Section', () => {
 
   test('has exactly six project cards', async ({ page }) => {
     await expect(page.locator('#projects .project-card')).toHaveCount(6);
+  });
+
+  test('shows ML and web project subsections', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'Machine learning & data' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Web applications' })).toBeVisible();
   });
 
   test('shows all project titles', async ({ page }) => {
@@ -256,7 +282,8 @@ test.describe('Contact Section', () => {
 
 test.describe('Footer', () => {
   test('shows copyright with current year', async ({ page }) => {
-    await expect(page.locator('footer')).toContainText('2026');
+    const year = String(new Date().getFullYear());
+    await expect(page.locator('footer')).toContainText(year);
     await expect(page.locator('footer')).toContainText('Ali Awil');
   });
 });
@@ -301,6 +328,29 @@ test.describe('Link Checker', () => {
     const res = await request.get('/resume.pdf');
     expect(res.status(), 'resume.pdf not found on server').toBeLessThan(400);
     expect(res.headers()['content-type']).toMatch(/pdf/);
+  });
+
+  test('llms.txt is served', async ({ request }) => {
+    const res = await request.get('/llms.txt');
+    expect(res.status()).toBeLessThan(400);
+    const text = await res.text();
+    expect(text).toContain('Ali Awil');
+    expect(text).toContain('University of Ottawa');
+  });
+
+  test('robots.txt is served and references sitemap', async ({ request }) => {
+    const res = await request.get('/robots.txt');
+    expect(res.status()).toBeLessThan(400);
+    const text = await res.text();
+    expect(text).toMatch(/Sitemap:\s*https:\/\/aliawil\.netlify\.app\/sitemap\.xml/);
+  });
+
+  test('sitemap.xml lists canonical homepage', async ({ request }) => {
+    const res = await request.get('/sitemap.xml');
+    expect(res.status()).toBeLessThan(400);
+    const text = await res.text();
+    expect(text).toContain('https://aliawil.netlify.app/');
+    expect(text).toContain('urlset');
   });
 
   test('GitHub profile is reachable', async ({ request }) => {
@@ -367,7 +417,8 @@ test.describe('Content Quality', () => {
 test.describe('Page Meta', () => {
   test('page title includes name and role', async ({ page }) => {
     await expect(page).toHaveTitle(/Ali Awil/);
-    await expect(page).toHaveTitle(/AI & Data Science Developer/);
+    await expect(page).toHaveTitle(/AI Researcher/);
+    await expect(page).toHaveTitle(/MSc Applied AI/);
   });
 
   test('has viewport meta tag for mobile', async ({ page }) => {
@@ -378,5 +429,22 @@ test.describe('Page Meta', () => {
   test('has meta description', async ({ page }) => {
     const desc = page.locator('meta[name="description"]');
     await expect(desc).toHaveAttribute('content', /.+/);
+  });
+
+  test('has Open Graph and Twitter image tags', async ({ page }) => {
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /.+/);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', /.+/);
+  });
+
+  test('JSON-LD is parseable and includes WebSite, Person, and ItemList', async ({ page }) => {
+    const raw = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(raw.trim().length).toBeGreaterThan(0);
+    const data = JSON.parse(raw);
+    expect(data['@context']).toBe('https://schema.org');
+    expect(Array.isArray(data['@graph'])).toBe(true);
+    const types = data['@graph'].map((node) => node['@type']);
+    expect(types).toContain('WebSite');
+    expect(types).toContain('Person');
+    expect(types).toContain('ItemList');
   });
 });

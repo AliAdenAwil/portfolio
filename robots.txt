@@ -1,0 +1,5 @@
+# Ali Awil portfolio — allow crawlers; see /llms.txt for AI-oriented summary
+User-agent: *
+Allow: /
+
+Sitemap: https://aliawil.netlify.app/sitemap.xml
